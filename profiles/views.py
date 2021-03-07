@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib.auth.decorators import login_required
+from .models import UserProfile
 from .forms import UserProfileForm
 
 
@@ -25,9 +26,26 @@ def create_profile(request):
         if user_profile_form.is_valid():
             user_profile_form.save()
 
+        return redirect(reverse('profile'))
+
     user_profile_form = UserProfileForm()
     template = 'profiles/create_profile.html'
     context = {
         'user_profile_form': user_profile_form,
+    }
+    return render(request, template, context)
+
+
+@login_required
+def profile(request):
+
+    try:
+        profile = get_object_or_404(UserProfile, user=request.user)
+    except Exception:
+        return redirect(reverse('create_profile'))
+
+    template = 'profiles/profile.html'
+    context = {
+        'profile': profile,
     }
     return render(request, template, context)
