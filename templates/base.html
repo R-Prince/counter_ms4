@@ -3,21 +3,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    {% block coremeta %}
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% endblock %}
 
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% block extra_meta %}
+    {% endblock %}
 
-    <!--JavaScript-->
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+    {% block corecss %}
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    {% endblock %}
 
-    <title>Counter</title>
+    {% block extra_css %}
+    {% endblock %}
+
+    {% block corejs %}
+        <!--JavaScript-->
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+    {% endblock %}
+
+    {% block extra_js %}
+    {% endblock %}
+
+    <title>Counter {% block extra_title %}{% endblock %}</title>
 </head>
 
 <body>
 
+    {% if messages %}
+        <div class="message-container"></div>
+    {% endif %}
+
+    {% block page_header %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% block postloadjs %}
+    {% endblock %}
 
 </body>
 </html>
