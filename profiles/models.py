@@ -19,4 +19,4 @@ class UserProfile(models.Model):
     company_logo = models.ImageField(blank=True)
 
     def __str__(self):
-        return self.user
+        return self.company_name

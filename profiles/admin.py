@@ -8,7 +8,7 @@ class UserProfileAdmin(admin.ModelAdmin):
                 'company_city', 'company_county',
                 'company_postcode', 'company_logo')
 
-    list_display = ('full_name', 'email',
+    list_display = ('user', 'full_name', 'email',
                     'phone_number', 'company_name')
 
 
