@@ -5,7 +5,17 @@ html{
 
 
 .nav-logo{
-    font-family: 'RocknRoll One', sans-serif;
+    font-family: 'Roboto Mono', monospace;
     letter-spacing: 3px;
     margin-left: 5px;
+}
+
+.allauth-panel{
+    margin-top: 7rem;
+}
+
+.allauth-page-header{
+    font-family: 'Roboto Mono', monospace;
+    letter-spacing: 3px;
+    margin: 10px 0px 25px 0px;
 }

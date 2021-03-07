@@ -18,8 +18,8 @@
         <!--Import Font Awesome-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous" type="text/css">
         <!--Import Google Fonts-->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&family=RocknRoll+One&display=swap" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono:wght@300&family=RocknRoll+One&display=swap" rel="stylesheet">
         <!--Import Base.css-->
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
@@ -53,7 +53,7 @@
                     <li><a href="">Features</a></li>
                     <li><a href="">Price Plans</a></li>
                     <li><a href="">Contact Us</a></li>
-                    <li><a href="">Login</a></li>
+                    <li><a href="{% url 'account_login' %}">Login</a></li>
                     <li><a href="" class="waves-effect waves-light btn">Try for Free</a></li>
                 </ul>
             </div>
@@ -66,7 +66,7 @@
             <li><a href="">Features</a></li>
             <li><a href="">Price Plans</a></li>
             <li><a href="">Contact Us</a></li>
-            <li><a href="">Login</a></li>
+            <li><a href="{% url 'account_login' %}">Login</a></li>
             <li><a href="" class="waves-effect waves-light btn">Try for Free</a></li>
         </ul>
     </header>
