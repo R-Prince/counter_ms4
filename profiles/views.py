@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile
 from .forms import UserProfileForm
+from django.contrib import messages
 
 
 @login_required(login_url='/accounts/confirm-email/')
@@ -25,6 +26,8 @@ def create_profile(request):
         user_profile_form = UserProfileForm(form_data)
         if user_profile_form.is_valid():
             user_profile_form.save()
+            messages.success(
+                request, f'Successfully created profile for {request.user}')
 
         return redirect(reverse('profile'))
 
@@ -41,6 +44,7 @@ def profile(request):
 
     try:
         profile = get_object_or_404(UserProfile, user=request.user)
+        messages.info(request, f'Logged into account: {profile.company_name}')
     except Exception:
         return redirect(reverse('create_profile'))
 

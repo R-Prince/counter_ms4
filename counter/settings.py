@@ -47,7 +47,6 @@ INSTALLED_APPS = [
 
     # Other Packages
     'crispy_forms',
-    'crispy_forms_materialize',
 ]
 
 MIDDLEWARE = [
@@ -62,7 +61,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'counter.urls'
 
-CRISPY_TEMPLATE_PACK = 'materialize_css_forms'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
     {
