@@ -40,7 +40,7 @@
     {% block extra_js %}
     {% endblock %}
 
-    <title>Counter {% block extra_title %}{% endblock %}</title>
+    <title>Counter</title>
 </head>
 
 <body>
@@ -48,36 +48,24 @@
         <!--Navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Counter</a>
+                <a class="navbar-brand" href="{% url 'profile' %}">Dashboard</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Features</a>
+                            <a class="nav-link" href="#">Invoices</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Price Plans</a>
+                            <a class="nav-link" href="#">Bills</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contact Us</a>
+                            <a class="nav-link" href="#">Customers</a>
                         </li>
-                        {% if request.user.is_authenticated %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'account_logout' %}">Log Out</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'profile' %}" class="btn btn-primary">Go to Profile</a>
-                            </li>
-                        {% else %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'account_login' %}">Log In</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'account_signup' %}" class="btn btn-primary">Try for Free</a>
-                            </li>
-                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_logout' %}">Log Out</a>
+                        </li>
                     </ul>
                 </div>
             </div>

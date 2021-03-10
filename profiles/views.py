@@ -41,10 +41,8 @@ def create_profile(request):
 
 @login_required
 def profile(request):
-
     try:
         profile = get_object_or_404(UserProfile, user=request.user)
-        messages.info(request, f'Logged into account: {profile.company_name}')
     except Exception:
         return redirect(reverse('create_profile'))
 
