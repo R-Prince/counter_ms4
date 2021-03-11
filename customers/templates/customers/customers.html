@@ -1,0 +1,14 @@
+{% extends 'base_account.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {% for customer in customers %}
+                    <p>{{ customer.company_name }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
