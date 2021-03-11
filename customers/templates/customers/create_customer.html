@@ -1,0 +1,31 @@
+{% extends 'base_account.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>Create Customer</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form action="{% url 'create_customer' %}" method="POST">
+                    {% csrf_token %}
+                    <fieldset>
+                        {{customer_form.customer_name | as_crispy_field }}
+                        {{customer_form.customer_email | as_crispy_field }}
+                        {{customer_form.customer_phone_number | as_crispy_field }}
+                        {{customer_form.company_name | as_crispy_field }}
+                        {{customer_form.company_street_address1 | as_crispy_field }}
+                        {{customer_form.company_street_address2 | as_crispy_field }}
+                        {{customer_form.company_city | as_crispy_field }}
+                        {{customer_form.company_county | as_crispy_field }}
+                        {{customer_form.company_postcode | as_crispy_field }}
+                    </fieldset>
+                    <div>
+                        <button id="submit-button" class="btn">
+                            Create Customer
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
