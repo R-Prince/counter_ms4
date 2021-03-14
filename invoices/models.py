@@ -54,9 +54,9 @@ class InvoiceItem(models.Model):
 
 
 class InvoiceStatus(models.Model):
-    invoice_id = models.ForeignKey(Invoice, on_delete=models.CASCADE)
-    paid = models.BooleanField(default=False)
+    invoice_id = models.OneToOneField(Invoice, on_delete=models.CASCADE)
+    paid = models.BooleanField()
     date_paid = models.DateField(null=False, blank=False)
 
     def __str__(self):
-        return self.date_paid
+        return self.paid
