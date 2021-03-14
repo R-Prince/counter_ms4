@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import Sum
 
 
 class Invoice(models.Model):
@@ -10,12 +11,18 @@ class Invoice(models.Model):
     invoice_number = models.CharField(max_length=20, null=False, blank=False)
     customer_account = models.CharField(
         max_length=200, null=False, blank=False)
-    sub_total = models.DecimalField(
-        max_digits=6, decimal_places=2, null=False, blank=False)
-    tax_amount = models.DecimalField(
-        max_digits=6, decimal_places=2, null=False, blank=False)
     invoice_total = models.DecimalField(
-        max_digits=6, decimal_places=2, null=False, blank=False)
+        max_digits=6, decimal_places=2, null=False, blank=False,
+        default=0)
+
+    def update_total(self):
+        """ Update Invoice Total """
+        self.invoice_total = self.lineitems.aggregate(
+            Sum('item_total'))['lineitem_total_sum']
+        self.save()
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.invoice_number
@@ -31,15 +38,25 @@ class InvoiceItem(models.Model):
     item_tax = models.DecimalField(
         max_digits=6, decimal_places=2, null=False, blank=False)
     item_total = models.DecimalField(
-        max_digits=6, decimal_places=2, null=False, blank=False)
+        max_digits=6, decimal_places=2, null=False, blank=False,
+        editable=False)
+
+    def save(self, *args, **kwargs):
+        """
+        Override the original save method to set the item_total
+        """
+        item_subtotal = self.price * self.quantity
+        self.item_total = item_subtotal + self.item_tax
+        super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.invoice_id
+        return self.description
 
 
 class InvoiceStatus(models.Model):
     invoice_id = models.ForeignKey(Invoice, on_delete=models.CASCADE)
-    status = models.BooleanField(default=False)
+    paid = models.BooleanField(default=False)
+    date_paid = models.DateField(null=False, blank=False)
 
     def __str__(self):
-        return self.status
+        return self.date_paid
