@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'home',
     'profiles',
     'customers',
-    'invoices',
+
 
     # Other Packages
     'crispy_forms',
