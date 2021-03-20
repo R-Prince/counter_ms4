@@ -5,10 +5,9 @@ from .models import Bill, BillLineItem
 class BillForm(forms.ModelForm):
     class Meta:
         model = Bill
-
-    fields = (
-        'customer_account', 'bill_date', 'due_date',
-        'reference_number', 'bill_paid',)
+        fields = (
+            'customer_account', 'bill_date', 'due_date',
+            'reference_number', 'bill_paid',)
 
     def __init__(self, *args, **kwargs):
         """
@@ -38,8 +37,7 @@ class BillForm(forms.ModelForm):
 class BillLineForm(forms.ModelForm):
     class Meta:
         model = BillLineItem
-
-    fields = ('description', 'quantity', 'price', 'item_tax',)
+        fields = ('description', 'quantity', 'price', 'item_tax',)
 
     def __init__(self, *args, **kwargs):
         """

@@ -1,0 +1,30 @@
+{% extends 'base_account.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form action="{% url 'create_bill' %}" method="POST">
+                    {% csrf_token %}
+                    <fieldset>
+                        {{ bill_form.customer_account | as_crispy_field }}
+                        {{ bill_form.bill_date | as_crispy_field }}
+                        {{ bill_form.due_date | as_crispy_field}}
+                        {{ bill_form.reference_number | as_crispy_field }}
+                        {{ bill_form.bill_paid | as_crispy_field }}
+                    </fieldset>
+                    <fieldset>
+                        {{ bill_line_form.description | as_crispy_field }}
+                        {{ bill_line_form.quantity | as_crispy_field }}
+                        {{ bill_line_form.price | as_crispy_field }}
+                        {{ bill_line_form.item_tax | as_crispy_field }}
+                    </fieldset>
+                    <div>
+                        <button class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
