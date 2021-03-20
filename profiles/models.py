@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from bills.models import Bill
 
 
 class UserProfile(models.Model):
@@ -18,7 +17,6 @@ class UserProfile(models.Model):
     company_county = models.CharField(max_length=80, blank=True)
     company_postcode = models.CharField(max_length=20, null=False, blank=False)
     company_logo = models.ImageField(blank=True)
-    bill = models.ManyToManyField(Bill)
 
     def __str__(self):
         return self.company_name

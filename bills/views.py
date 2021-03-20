@@ -16,9 +16,19 @@ def create_bill(request):
         }
         bill_form = BillForm(form_data)
         if bill_form.is_valid():
-            bill_form.save()
-            messages.success(request, ("Bill Successfully Created!"))
-            return redirect(reverse('profile'))
+            bill = bill_form.save()
+            bill_line_data = {
+                'bill': bill,
+                'description': request.POST['description'],
+                'quantity': request.POST['quantity'],
+                'price': request.POST['price'],
+                'item_tax': request.POST['item_tax'],
+            }
+            bill_line_form = BillLineForm(bill_line_data)
+            if bill_line_form.is_valid():
+                bill_line_form.save()
+                messages.success(request, ("Bill Successfully Created!"))
+                return redirect(reverse('profile'))
 
     bill_form = BillForm()
     bill_line_form = BillLineForm()

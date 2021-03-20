@@ -39,7 +39,7 @@ class BillForm(forms.ModelForm):
 class BillLineForm(forms.ModelForm):
     class Meta:
         model = BillLineItem
-        fields = ('description', 'quantity', 'price', 'item_tax',)
+        fields = ('bill', 'description', 'quantity', 'price', 'item_tax',)
 
     def __init__(self, *args, **kwargs):
         """
@@ -48,6 +48,7 @@ class BillLineForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
         placeholders = {
+            'bill': 'Bill',
             'description': 'Item Description',
             'quantity': 'Qty',
             'price': 'Item Price',
