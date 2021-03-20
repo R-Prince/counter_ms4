@@ -6,6 +6,7 @@ class BillForm(forms.ModelForm):
     class Meta:
         model = Bill
         fields = (
+            'user',
             'customer_account', 'bill_date', 'due_date',
             'reference_number', 'bill_paid',)
 
@@ -16,6 +17,7 @@ class BillForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
         placeholders = {
+            'user': 'Username',
             'customer_account': 'Customer Account',
             'bill_date': 'Bill Date',
             'due_date': 'Due Date',

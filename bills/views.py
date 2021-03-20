@@ -1,9 +1,25 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from .forms import BillForm, BillLineForm
+from django.contrib import messages
 
 
 # Create Bill
 def create_bill(request):
+    if request.method == 'POST':
+        form_data = {
+            'user': request.user,
+            'customer_account': request.POST['customer_account'],
+            'bill_date': request.POST['bill_date'],
+            'due_date': request.POST['due_date'],
+            'reference_number': request.POST['reference_number'],
+            'bill_paid': request.POST['bill_paid'],
+        }
+        bill_form = BillForm(form_data)
+        if bill_form.is_valid():
+            bill_form.save()
+            messages.success(request, ("Bill Successfully Created!"))
+            return redirect(reverse('profile'))
+
     bill_form = BillForm()
     bill_line_form = BillLineForm()
 
