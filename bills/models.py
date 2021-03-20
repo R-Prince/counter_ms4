@@ -11,8 +11,8 @@ class Bill(models.Model):
     bill_number = models.CharField(max_length=32, null=False, editable=False)
     customer_account = models.CharField(
         max_length=200, null=False, blank=False)
-    bill_date = models.DateTimeField(null=False, blank=False)
-    due_date = models.DateTimeField(null=False, blank=False)
+    bill_date = models.DateField(null=False, blank=False)
+    due_date = models.DateField(null=False, blank=False)
     reference_number = models.CharField(max_length=50, null=False, blank=False)
     bill_paid = models.BooleanField(default=False)
     bill_total = models.DecimalField(
