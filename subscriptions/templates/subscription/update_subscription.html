@@ -1,0 +1,31 @@
+{% extends 'base_account.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Update Subscription</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <ul>
+                    <li>Your subscription ended: {{current_subscription.end_date}}</li>
+                    <li>Username: {{request.user}}</li>
+                    <li>Company: {{profile.company_name}}</li>
+                </ul>
+                <p>
+                    Renew Subscription now to access profile!
+                </p>
+                <ul>
+                    <li>Price £19.99 for 31 days</li>
+                    <li>Subscription will end {{sub_end}}</li>
+                </ul>
+            </div>
+            <div class="col-12 col-md-6">
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
