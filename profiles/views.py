@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from .models import UserProfile
 from .forms import UserProfileForm
 from django.contrib import messages
+from subscriptions.models import Subscription
+from datetime import date
 
 
 @login_required(login_url='/accounts/confirm-email/')
@@ -44,10 +46,18 @@ def profile(request):
     try:
         profile = get_object_or_404(UserProfile, user=request.user)
     except Exception:
+        messages.success(request, 'Please create a profile first')
         return redirect(reverse('create_profile'))
+
+    user_subscription = get_object_or_404(Subscription, user=request.user)
 
     template = 'profiles/profile.html'
     context = {
         'profile': profile,
     }
-    return render(request, template, context)
+
+    if user_subscription.end_date < date.today():
+        messages.success(request, 'Please udpate subscription')
+        return redirect(reverse('home'))
+    else:
+        return render(request, template, context)
