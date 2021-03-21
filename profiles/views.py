@@ -4,12 +4,12 @@ from .models import UserProfile
 from .forms import UserProfileForm
 from django.contrib import messages
 from subscriptions.models import Subscription
-from datetime import date
+from datetime import date, timedelta
 
 
 @login_required(login_url='/accounts/confirm-email/')
 def create_profile(request):
-    # Create user profile
+    # Create user profile and subscription
     if request.method == 'POST':
 
         form_data = {
@@ -28,8 +28,13 @@ def create_profile(request):
         user_profile_form = UserProfileForm(form_data)
         if user_profile_form.is_valid():
             user_profile_form.save()
-            messages.success(
-                request, f'Successfully created profile for {request.user}')
+            # Create 14 day free Subscription
+            end_date = date.today() + timedelta(days=14)
+            create_subscription = Subscription(
+                user=request.user,
+                start_date=date.today(),
+                end_date=end_date)
+            create_subscription.save()
 
         return redirect(reverse('profile'))
 
@@ -50,12 +55,11 @@ def profile(request):
         return redirect(reverse('create_profile'))
 
     user_subscription = get_object_or_404(Subscription, user=request.user)
-
     template = 'profiles/profile.html'
     context = {
         'profile': profile,
     }
-
+    # check if user subscription is valid
     if user_subscription.end_date < date.today():
         messages.success(request, 'Please udpate subscription')
         return redirect(reverse('home'))
