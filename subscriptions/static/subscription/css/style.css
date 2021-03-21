@@ -27,6 +27,14 @@
   background: white;
 }
 
+#card-error {
+  color: red;
+  text-align: left;
+  font-size: 13px;
+  line-height: 17px;
+  margin-top: 12px;
+}
+
 button {
   background: #5469d4;
   color: #ffffff;
