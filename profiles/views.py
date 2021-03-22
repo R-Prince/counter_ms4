@@ -62,6 +62,6 @@ def profile(request):
     # check if user subscription is valid
     if user_subscription.end_date < date.today():
         messages.success(request, 'Please udpate subscription')
-        return redirect(reverse('home'))
+        return redirect(reverse('update_sub'))
     else:
         return render(request, template, context)
