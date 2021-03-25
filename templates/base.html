@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous" type="text/css">
         <!--Import Google Fonts-->
             <link rel="preconnect" href="https://fonts.gstatic.com">
-            <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono:wght@300&family=RocknRoll+One&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Raleway&display=swap" rel="stylesheet">
         <!--Import Base.css-->
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
@@ -46,11 +46,11 @@
 <body>
     <header>
         <!--Navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg home-nav">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Counter</a>
+                <a class="navbar-brand nav-logo" href="{% url 'home' %}">Counter</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <i class="fas fa-bars nav-icon"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
@@ -67,15 +67,15 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'account_logout' %}">Log Out</a>
                             </li>
-                            <li>
-                                <a href="{% url 'profile' %}" class="btn btn-primary">Go to Profile</a>
+                            <li class="nav-item">
+                                <a href="{% url 'profile' %}" class="btn green-btn ">Profile</a>
                             </li>
                         {% else %}
-                            <li class="nav-item">
+                            <li class="nav-item align-middle">
                                 <a class="nav-link" href="{% url 'account_login' %}">Log In</a>
                             </li>
                             <li>
-                                <a href="{% url 'account_signup' %}" class="btn btn-primary">Try for Free</a>
+                                <a href="{% url 'account_signup' %}" class="btn green-btn">Try for Free</a>
                             </li>
                         {% endif %}
                     </ul>
