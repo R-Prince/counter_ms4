@@ -65,3 +65,21 @@ def profile(request):
         return redirect(reverse('update_sub'))
     else:
         return render(request, template, context)
+
+
+@login_required
+def profile_info(request):
+    try:
+        profile = get_object_or_404(UserProfile, user=request.user)
+    except Exception:
+        messages.error(request, 'Profile does not exist')
+        return redirect(reverse('home'))
+
+    user_subscription = get_object_or_404(Subscription, user=request.user)
+    template = 'profiles/profile_info.html'
+    context = {
+        'profile': profile,
+        'user_sub': user_subscription
+    }
+
+    return render(request, template, context)

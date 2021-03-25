@@ -9,28 +9,30 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Company</th>
-                            <th scope="col">Contact</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for customer in customers %}
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="table-light">
                             <tr>
-                                <th scope="row">{{ customer.company_name }}</th>
-                                <td>{{ customer.customer_name }}</td>
-                                <td>{{ customer.customer_email }}</td>
-                                <td>{{ customer.customer_phone_number }}</td>
-                                <td><a href="" class="btn btn-navy">View</a></td>
+                                <th scope="col">Company</th>
+                                <th scope="col">Contact</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col"></th>
                             </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {% for customer in customers %}
+                                <tr>
+                                    <th scope="row">{{ customer.company_name }}</th>
+                                    <td>{{ customer.customer_name }}</td>
+                                    <td>{{ customer.customer_email }}</td>
+                                    <td>{{ customer.customer_phone_number }}</td>
+                                    <td><a href="" class="btn btn-navy">View</a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <div class="col-12">
