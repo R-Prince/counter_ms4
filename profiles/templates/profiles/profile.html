@@ -1,71 +1,75 @@
 {% extends 'base_account.html' %}
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}">
+{% endblock %}
+
 {% block content %}
-    <div class="container-fluid">
+    <div class="container-fluid profile-container">
         <div class="row">
             <div class="col-12 col-md-3">
-                <ul>
+                <ul class="profile-action">
                     <li>
-                        <a href="" class="btn btn-secondary btn-lg">Create Invoice</a>
+                        <a href="" class="btn btn-navy">Create Invoice</a>
                     </li>
                     <li>
-                        <a href="{% url 'create_bill' %}" class="btn btn-secondary btn-lg">Create Bill</a>
+                        <a href="{% url 'create_bill' %}" class="btn btn-navy">Create Bill</a>
                     </li>
                     <li>
-                        <button type="button" class="btn btn-secondary btn-lg">Create Customer</button>
+                        <a href="{% url 'create_customer' %}" class="btn btn-navy">Create Customer</a>
                     </li>
                 </ul>
             </div>
             <div class="col-12 col-md-9">
                 <div class="row">
                     <div class="col-12 col-md-6">
-                        <div class="card">
-                            <div class="card-header">
+                        <div class="card profile-card">
+                            <div class="card-header profile-header">
                                 Overdue Invoices
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">Special title treatment</h5>
+                                <h5 class="card-title"></h5>
                                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <a href="#" class="btn btn-blue">View Invoices</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
-                        <div class="card">
-                            <div class="card-header">
+                        <div class="card profile-card">
+                            <div class="card-header profile-header">
                                 Outstanding Bills
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">Special title treatment</h5>
+                                <h5 class="card-title"></h5>
                                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <a href="#" class="btn btn-blue">View Bills</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 col-md-6">
-                        <div class="card">
-                            <div class="card-header">
+                        <div class="card profile-card">
+                            <div class="card-header profile-header">
                                 Invoices
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">Special title treatment</h5>
+                                <h5 class="card-title"></h5>
                                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <a href="#" class="btn btn-blue">View Invoices</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
-                        <div class="card">
-                            <div class="card-header">
+                        <div class="card profile-card">
+                            <div class="card-header profile-header">
                                 Bills
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">Special title treatment</h5>
+                                <h5 class="card-title"></h5>
                                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <a href="#" class="btn btn-blue">View Bills</a>
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,7 @@
-html{
-    font-family: 'Raleway', sans-serif;
+body{
+    font-family: 'Abel', sans-serif;
     letter-spacing: 2px;
+    font-size: 18px;
 }
 
 /* Buttons */
@@ -78,6 +79,7 @@ html{
 .hero-text{
     letter-spacing: 3px;
     color: white;
+    font-family: 'Abel', sans-serif;
 }
 
 .allauth-panel{

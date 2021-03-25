@@ -1,0 +1,41 @@
+.profile-container{
+    margin-top: 32px;
+}
+
+.profile-action li {
+  list-style-type: none;
+  margin: 10px 0px 10px 0px;
+}
+
+.profile-action{
+    padding-left: 0;
+}
+
+.btn-lgreen{
+    background-color: #05F283;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.btn-navy{
+    background-color: #010B40;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.btn-blue{
+    background-color: #0583F2;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.profile-header{
+    background-color: #0583F2;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 2px;
+}
+
+.profile-card{
+    margin: 15px;
+}
