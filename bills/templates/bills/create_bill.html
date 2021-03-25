@@ -7,19 +7,27 @@
             <div class="col-12">
                 <form action="{% url 'create_bill' %}" method="POST">
                     {% csrf_token %}
-                    <fieldset>
-                        {{ bill_form.customer_account | as_crispy_field }}
-                        {{ bill_form.bill_date | as_crispy_field }}
-                        {{ bill_form.due_date | as_crispy_field}}
-                        {{ bill_form.reference_number | as_crispy_field }}
+                        <div class="row">
+                            <div class="col-12 col-md-4">
+                                {{ bill_form.customer_account | as_crispy_field }}
+                            </div>
+                            <div class="col-6 col-md-2">
+                                {{ bill_form.bill_date | as_crispy_field }}
+                            </div>
+                            <div class="col-6 col-md-2">
+                                {{ bill_form.due_date | as_crispy_field}}
+                            </div>
+                            <div class="col-6 col-md-3">
+                                {{ bill_form.reference_number | as_crispy_field }}
+                            </div>
+                        </div>
                         {{ bill_form.bill_paid | as_crispy_field }}
-                    </fieldset>
-                    <fieldset>
-                        {{ bill_line_form.description | as_crispy_field }}
-                        {{ bill_line_form.quantity | as_crispy_field }}
-                        {{ bill_line_form.price | as_crispy_field }}
-                        {{ bill_line_form.item_tax | as_crispy_field }}
-                    </fieldset>
+                        <fieldset>
+                            {{ bill_line_form.description | as_crispy_field }}
+                            {{ bill_line_form.quantity | as_crispy_field }}
+                            {{ bill_line_form.price | as_crispy_field }}
+                            {{ bill_line_form.item_tax | as_crispy_field }}
+                        </fieldset>
                     <div>
                         <button class="btn btn-primary">Submit</button>
                     </div>
@@ -27,4 +35,8 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block postloadjs %}
+    <script src="{% static 'bills/js/bills.js' %}"></script>
 {% endblock %}
