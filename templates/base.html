@@ -85,7 +85,7 @@
     </header>
 
     {% if messages %}
-        <div class="message-container">
+        <div class="message-container position-absolute top-1 end-1 p-3">
             {% for message in messages %}
                 {% with message.level as level %}
                     {% if level == 40 %}

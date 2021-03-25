@@ -105,6 +105,32 @@ body{
     margin: 20px 0px;
 }
 
+/* Messages CSS */
+
+.messages-container{
+    z-index: 99999;
+}
+
+.toast-success{
+    background-color: #0583F2;
+    color: #fff;
+}
+
+.toast-error{
+    background-color: #E61505;
+    color: #fff;
+}
+
+.toast-info{
+    background-color: #05F283;
+    color: #fff;
+}
+
+.toast-warning{
+    background-color: #FF8C64;
+    color: #fff;
+}
+
 .allauth-panel{
     margin-top: 7rem;
 }
