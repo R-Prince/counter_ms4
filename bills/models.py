@@ -28,7 +28,7 @@ class Bill(models.Model):
         Update bill total each time a bill line item is added
         """
         self.bill_total = self.lineitems.aggregate(
-            Sum('item_total'))['item_total__sum']
+            Sum('item_total'))['item_total__sum'] or 0
         self.save()
 
     def save(self, *args, **kwargs):
