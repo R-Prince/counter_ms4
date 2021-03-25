@@ -8,7 +8,7 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 col-md-8 offset-md-2">
                 <form action="{% url 'create_customer' %}" method="POST">
                     {% csrf_token %}
                     <fieldset>
@@ -22,10 +22,14 @@
                         {{customer_form.company_county | as_crispy_field }}
                         {{customer_form.company_postcode | as_crispy_field }}
                     </fieldset>
-                    <div>
-                        <button id="submit-button" class="btn">
-                            Create Customer
-                        </button>
+                    <div class="container submit-container">
+                        <div class="row">
+                            <div class="d-flex justify-content-center">
+                                <button id="submit-button" class="btn btn-lg green-btn">
+                                    Create Customer
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>

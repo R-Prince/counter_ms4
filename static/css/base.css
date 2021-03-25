@@ -89,6 +89,22 @@ body{
     font-family: 'Abel', sans-serif;
 }
 
+/* Form CSS */
+
+.textInput{
+    border: 2px solid #010B40;
+    margin: 10px 0px 10px 0px;
+}
+
+.emailinput{
+    border: 2px solid #010B40;
+    margin: 10px 0px 10px 0px;
+}
+
+.submit-container{
+    margin: 20px 0px;
+}
+
 .allauth-panel{
     margin-top: 7rem;
 }
