@@ -59,6 +59,13 @@ body{
     font-size: 35px;
 }
 
+/* Page Header CSS */
+.page-header{
+    margin: 40px 0px 40px 0px;
+    letter-spacing: 4px;
+    font-size: 45px;
+}
+
 /* Homepage CSS */
 
 .hero-container{

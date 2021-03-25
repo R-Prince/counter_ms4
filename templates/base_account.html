@@ -94,9 +94,16 @@
             {% endfor %}
         </div>
     {% endif %}
-
-    {% block page_header %}
-    {% endblock %}
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {% block page_header %}
+                    
+                {% endblock %}
+            </div>
+        </div>
+    </div>
 
     {% block content %}
     {% endblock %}
