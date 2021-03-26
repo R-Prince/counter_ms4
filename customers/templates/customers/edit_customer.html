@@ -15,7 +15,18 @@
             <div class="col-12 col-md-8 offset-md-2">
                 <form action="{% url 'edit_customer' customer.id %}" method="POST">
                     {% csrf_token %}
-                    {{ form|crispy }}
+                    <fieldset>
+                        <div hidden>{{form.user | as_crispy_field }}</div>
+                        {{form.customer_name | as_crispy_field }}
+                        {{form.customer_email | as_crispy_field }}
+                        {{form.customer_phone_number | as_crispy_field }}
+                        {{form.company_name | as_crispy_field }}
+                        {{form.company_street_address1 | as_crispy_field }}
+                        {{form.company_street_address2 | as_crispy_field }}
+                        {{form.company_city | as_crispy_field }}
+                        {{form.company_county | as_crispy_field }}
+                        {{form.company_postcode | as_crispy_field }}
+                    </fieldset>
                     <div class="row submit-container">
                         <div class="d-flex justify-content-center">
                             <button id="submit-button" class="btn green-btn btn-lg">

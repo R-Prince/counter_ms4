@@ -26,8 +26,8 @@ class Customer(models.Model):
 
 
 @receiver(post_save, sender=User)
-def update_user_profile(sender, instance, created, **kwargs):
+def update_user_customer(sender, instance, created, **kwargs):
     """
     update customer details
     """
-    instance.customer.save()
+    instance.userprofile.save()
