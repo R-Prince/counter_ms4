@@ -1,11 +1,13 @@
-from django.shortcuts import render, get_list_or_404, redirect, reverse
+from django.shortcuts import render, get_list_or_404, redirect, reverse, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import Customer
 from .forms import CustomerForm
 from django.contrib import messages
 
 
-# View users customers
+@login_required
 def customers(request):
+    # View users customers
     customers = get_list_or_404(Customer, user=request.user)
     template = 'customers/customers.html'
     context = {
@@ -14,6 +16,7 @@ def customers(request):
     return render(request, template, context)
 
 
+@login_required
 def create_customer(request):
     # Create user customer
     if request.method == 'POST':
@@ -43,4 +46,26 @@ def create_customer(request):
     context = {
         'customer_form': customer_form,
     }
+    return render(request, template, context)
+
+
+@login_required
+def edit_customer(request, customer_id):
+    # Edit Customer Details
+    customer = get_object_or_404(Customer, pk=customer_id)
+
+    if request.method == 'POST':
+        form = CustomerForm(request.POST, instance=customer)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Customer updated successfully')
+
+    form = CustomerForm(instance=customer)
+
+    template = 'customers/edit_customer.html'
+    context = {
+        'form': form,
+        'customer': customer
+    }
+
     return render(request, template, context)

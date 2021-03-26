@@ -1,5 +1,7 @@
 from django.db import models
 from profiles.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 # Create your models here.
@@ -21,3 +23,11 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.company_name
+
+
+@receiver(post_save, sender=User)
+def update_user_profile(sender, instance, created, **kwargs):
+    """
+    update customer details
+    """
+    instance.customer.save()
