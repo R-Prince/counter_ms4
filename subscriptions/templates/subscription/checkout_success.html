@@ -5,17 +5,19 @@
     <link rel="stylesheet" href="{% static 'subscription/css/style.css' %}">
 {% endblock %}
 
+{% block page_header %}
+    <h1 class="d-flex justify-content-center page-header">Thank you!</h1>
+{% endblock %}
+
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <h1>Thank you!</h1>
+            <div class="col-12 col-md-8 offset-md-2">
+                <p>Your subscription has now been updated and will end on <span class="fw-bold">{{subscription.end_date}}</span>.</p>
+                <p>Email confirmation has been sent to <span class="fw-bold">{{profile.email}}</span></p>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-md-6">
-                <p>Your subscrription has now been updated and will end on {{subscription.end_date}}. Email confirmation has been sent to {{profile.email}}</p>
-                <a href="{% url 'profile' %}" class="btn btn-primary">Go to Profile</a>
+            <div class="d-flex justify-content-center">
+                <a href="{% url 'profile' %}" class="btn green-btn btn-lg">Go to Profile</a>
             </div>
         </div>
     </div>
