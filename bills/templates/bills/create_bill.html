@@ -1,35 +1,59 @@
 {% extends 'base_account.html' %}
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'bills/css/bills.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <h1 class="d-flex justify-content-center page-header">Create Bill</h1>
+{% endblock %}
+
 {% block content %}
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <form action="{% url 'create_bill' %}" method="POST">
                     {% csrf_token %}
-                        <div class="row">
-                            <div class="col-12 col-md-4">
-                                {{ bill_form.customer_account | as_crispy_field }}
-                            </div>
-                            <div class="col-6 col-md-2">
-                                {{ bill_form.bill_date | as_crispy_field }}
-                            </div>
-                            <div class="col-6 col-md-2">
-                                {{ bill_form.due_date | as_crispy_field}}
-                            </div>
-                            <div class="col-6 col-md-3">
-                                {{ bill_form.reference_number | as_crispy_field }}
-                            </div>
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            {{ bill_form.customer_account | as_crispy_field }}
                         </div>
-                        {{ bill_form.bill_paid | as_crispy_field }}
-                        <fieldset>
-                            {{ bill_line_form.description | as_crispy_field }}
-                            {{ bill_line_form.quantity | as_crispy_field }}
-                            {{ bill_line_form.price | as_crispy_field }}
-                            {{ bill_line_form.item_tax | as_crispy_field }}
-                        </fieldset>
+                        <div class="col-6 col-md-2">
+                            {{ bill_form.bill_date | as_crispy_field }}
+                        </div>
+                        <div class="col-6 col-md-2">
+                            {{ bill_form.due_date | as_crispy_field}}
+                        </div>
+                        <div class="col-6 col-md-3">
+                            {{ bill_form.reference_number | as_crispy_field }}
+                        </div>
+                    </div>
+                    <div class="row" id="bill_lines">
+                        <div class="row" id="bill_items">
+                            <div class="col-12 col-md-4">
+                                <input type="text" class="form-control textInput" id="description" name="description" placeholder="Description*" required minlength="3">
+                            </div>
+                            <div class="col-6 col-md-2">
+                                <input type="number" class="form-control textInput" id="quantity" name="quantity" min="1" max="1000000" placeholder="Qty*" required>
+                            </div>
+                            <div class="col-6 col-md-2">
+                                <input type="number" class="form-control textInput" id="price" name="price" min="0.01" max="1000000" placeholder="Price*" required>
+                            </div>
+                            <div class="col-6 col-md-2">
+                                <input type="number" class="form-control textInput" id="tax" name="tax" min="0.01" max="1000000" placeholder="Tax*" required>
+                            </div>
+                            <i class="delete_line fas fa-trash-alt delete-button"></i>
+                        </div>                                            
+                    </div>
+                    <div class="row button-container">
+                        <div class="col-6 col-md-4">
+                            <button id="add_item" class="btn btn-blue" >Add Item</button>
+                        </div>
+                    </div>
+                    {{ bill_form.bill_paid | as_crispy_field }}
                     <div>
-                        <button class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn green-btn">Submit</button>
                     </div>
                 </form>
             </div>
