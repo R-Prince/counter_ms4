@@ -15,7 +15,7 @@ def create_profile(request):
         form_data = {
             'user': request.user,
             'full_name': request.POST['full_name'],
-            'email': request.POST['email'],
+            'email': request.user.email,
             'phone_number': request.POST['phone_number'],
             'company_name': request.POST['company_name'],
             'company_street_address1': request.POST['company_street_address1'],
@@ -35,6 +35,7 @@ def create_profile(request):
                 start_date=date.today(),
                 end_date=end_date)
             create_subscription.save()
+            messages.info(request, 'Profile created Successfully')
 
         return redirect(reverse('profile'))
 
@@ -51,7 +52,7 @@ def profile(request):
     try:
         profile = get_object_or_404(UserProfile, user=request.user)
     except Exception:
-        messages.success(request, 'Please create a profile first')
+        messages.info(request, 'Please create a Profile')
         return redirect(reverse('create_profile'))
 
     user_subscription = get_object_or_404(Subscription, user=request.user)

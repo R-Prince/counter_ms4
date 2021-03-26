@@ -12,12 +12,11 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 col-md-8 offset-md-2">
                 <form action="{% url 'create_profile' %}" method="POST">
                     {% csrf_token %}
                     <fieldset>
                         {{user_profile_form.full_name | as_crispy_field }}
-                        {{user_profile_form.email | as_crispy_field }}
                         {{user_profile_form.phone_number | as_crispy_field }}
                         {{user_profile_form.company_name | as_crispy_field }}
                         {{user_profile_form.company_street_address1 | as_crispy_field }}
@@ -27,10 +26,12 @@
                         {{user_profile_form.company_postcode | as_crispy_field }}
                         {{user_profile_form.company_logo | as_crispy_field }}
                     </fieldset>
-                    <div>
-                        <button id="submit-button" class="btn">
-                            Sign Up
-                        </button>
+                    <div class="row submit-container">
+                        <div class="d-flex justify-content-center">
+                            <button id="submit-button" class="btn green-btn btn-lg">
+                                Sign Up
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>

@@ -22,11 +22,3 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.company_name
-
-
-@receiver(post_save, sender=User)
-def update_user_profile(sender, instance, created, **kwargs):
-    """
-    update the user profile
-    """
-    instance.userprofile.save()

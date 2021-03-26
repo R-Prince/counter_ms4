@@ -23,11 +23,3 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.company_name
-
-
-@receiver(post_save, sender=User)
-def update_user_customer(sender, instance, created, **kwargs):
-    """
-    update customer details
-    """
-    instance.userprofile.save()
