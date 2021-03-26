@@ -5,42 +5,35 @@
     <link rel="stylesheet" href="{% static 'subscription/css/style.css' %}">
 {% endblock %}
 
+{% block page_header %}
+    <h1 class="d-flex justify-content-center page-header">Update Subscription</h1>
+{% endblock %}
+
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <h1>Update Subscription</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-md-6">
-                <ul>
+            <div class="col-12 col-md-8 offset-md-2">
+                <ul class="sub-details">
                     <li>Your subscription ended: {{current_subscription.end_date}}</li>
                     <li>Username: {{request.user}}</li>
                     <li>Company: {{profile.company_name}}</li>
+                    <li class="fw-bold">
+                        Renew Subscription now to access profile!
+                    </li>
                 </ul>
-                <p>
-                    Renew Subscription now to access profile!
-                </p>
-                <ul>
-                    <li>Price £19.99 for 31 days</li>
-                    <li>Subscription will end {{sub_end}}</li>
-                </ul>
-            </div>
-            <div class="col-12 col-md-6">
-                <div class="row">
-                    <div class="col-12">
-                        <form action="{% url 'update_sub' %}" method="POST" id="payment-form">
-                            {% csrf_token %}
-                             <!-- A Stripe card element will go here -->
-                            <div id="card-element"></div>
-                            <!-- Used to display form errors -->
-                            <div id="card-error" role="alert"></div>
-                            <button id="submit-button">
-                                <span id="button-text">Pay now</span>
-                            </button>
-                        </form>
-                    </div>
+                <div class="col-12 col-md-8">
+                    <form action="{% url 'update_sub' %}" method="POST" id="payment-form">
+                        {% csrf_token %}
+                        <!-- A Stripe card element will go here -->
+                        <span class="charge-amount">Card Payment £19.99</span>
+                        <div id="card-element"></div>
+                        <!-- Used to display form errors -->
+                        <div id="card-error" role="alert"></div>
+                        <button id="submit-button">
+                            <span id="button-text">Pay now</span>
+                        </button>
+                        <span class="sub-end d-flex justify-content-end">New subscription will end {{sub_end}}</span>
+                    </form>
                 </div>
             </div>
         </div>
