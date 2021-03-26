@@ -69,17 +69,21 @@ def profile(request):
 
 @login_required
 def profile_info(request):
-    try:
-        profile = get_object_or_404(UserProfile, user=request.user)
-    except Exception:
-        messages.error(request, 'Profile does not exist')
-        return redirect(reverse('home'))
+    # View and Update User Profile
+    profile = get_object_or_404(UserProfile, user=request.user)
 
-    user_subscription = get_object_or_404(Subscription, user=request.user)
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Profile updated successfully')
+
+    form = UserProfileForm(instance=profile)
+
     template = 'profiles/profile_info.html'
     context = {
-        'profile': profile,
-        'user_sub': user_subscription
+        'form': form,
     }
 
     return render(request, template, context)
+

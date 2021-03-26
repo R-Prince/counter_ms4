@@ -119,6 +119,11 @@ body{
     margin: 10px 0px 10px 0px;
 }
 
+.select{
+    border: 2px solid #010B40;
+    margin: 10px 0px 10px 0px;
+}
+
 .submit-container{
     margin: 20px 0px;
 }

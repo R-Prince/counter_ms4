@@ -6,32 +6,24 @@
 {% endblock %}
 
 {% block page_header %}
-    <h1 class="d-flex justify-content-center page-header">Profile Info</h1>
+    <h1 class="d-flex justify-content-center page-header">Profile</h1>
 {% endblock %}
 
 {% block content %}
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-8 offset-md-2">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Username: {{profile.user}}</li>
-                    <li class="list-group-item">Full Name: {{profile.full_name}}</li>
-                    <li class="list-group-item">Email: {{profile.email}}</li>
-                    <li class="list-group-item">Phone Number: {{profile.phone_number}}</li>
-                    <li class="list-group-item">Company Name: {{profile.company_name}}</li>
-                    <li class="list-group-item">Company Street Address 1: {{profile.company_street_address1}}</li>
-                    <li class="list-group-item">Company City: {{profile.company_city}}</li>
-                    <li class="list-group-item">Company County: {{profile.company_county}}</li>
-                    <li class="list-group-item">Company Postcode: {{profile.company_postcode}}</li>
-                    <li class="list-group-item">Subscription End Date: {{user_sub.end_date}}</li>
-                </ul>
-            </div>
-        </div>
-        <div class="row submit-container">
-            <div class="d-flex justify-content-center">
-                <button id="submit-button" class="btn btn-lg green-btn">
-                    Edit Profile
-                </button>
+                <form action="{% url 'profile_info' %}" method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="row submit-container">
+                        <div class="d-flex justify-content-center">
+                            <button id="submit-button" class="btn green-btn btn-lg">
+                                Update Profile
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
