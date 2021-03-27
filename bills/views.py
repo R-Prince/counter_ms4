@@ -5,6 +5,7 @@ from django.contrib import messages
 
 # Create Bill
 def create_bill(request):
+
     if request.method == 'POST':
         form_data = {
             'user': request.user,
@@ -14,6 +15,7 @@ def create_bill(request):
             'reference_number': request.POST['reference_number'],
             'bill_paid': request.POST['bill_paid'],
         }
+        # Use Form data to create Bill
         bill_form = BillForm(form_data)
         if bill_form.is_valid():
             bill = bill_form.save()
@@ -47,18 +49,14 @@ def create_bill(request):
                         'price': bill_line_data['price'][i],
                         'item_tax': bill_line_data['tax'][i],
                     }
-                print(bill_line)
                 bill_line_form = BillLineForm(bill_line)
                 bill_line_form.save()
             messages.success(request, ("Bill Successfully Created!"))
             return redirect(reverse('profile'))
 
     bill_form = BillForm()
-    bill_line_form = BillLineForm()
-
     context = {
         'bill_form': bill_form,
-        'bill_line_form': bill_line_form
     }
 
     template = 'bills/create_bill.html'
