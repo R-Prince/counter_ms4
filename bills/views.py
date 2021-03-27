@@ -17,18 +17,41 @@ def create_bill(request):
         bill_form = BillForm(form_data)
         if bill_form.is_valid():
             bill = bill_form.save()
-            bill_line_data = {
-                'bill': bill,
-                'description': request.POST['description'],
-                'quantity': request.POST['quantity'],
-                'price': request.POST['price'],
-                'item_tax': request.POST['item_tax'],
-            }
-            bill_line_form = BillLineForm(bill_line_data)
-            if bill_line_form.is_valid():
+            key = []
+            value = []
+            # Create dict from request.POST data
+            for data in request.POST.lists():
+                key.append('bill')
+                value.append(bill)
+                key.append(data[0])
+                value.append(data[1])
+            data = zip(key, value)
+            bill_line_data = (dict(data))
+
+            # Remove unwanted POST data
+            bill_line_data.popitem()
+            remove = (
+                'csrfmiddlewaretoken', 'customer_account',
+                'bill_date', 'due_date', 'reference_number')
+
+            for items in remove:
+                bill_line_data.pop(items)
+
+            # Using dict create new Bill Line form
+            for i in range(len(bill_line_data['description'])):
+                for key, value in bill_line_data.items():
+                    bill_line = {
+                        'bill': bill_line_data['bill'],
+                        'description': bill_line_data['description'][i],
+                        'quantity': bill_line_data['quantity'][i],
+                        'price': bill_line_data['price'][i],
+                        'item_tax': bill_line_data['tax'][i],
+                    }
+                print(bill_line)
+                bill_line_form = BillLineForm(bill_line)
                 bill_line_form.save()
-                messages.success(request, ("Bill Successfully Created!"))
-                return redirect(reverse('profile'))
+            messages.success(request, ("Bill Successfully Created!"))
+            return redirect(reverse('profile'))
 
     bill_form = BillForm()
     bill_line_form = BillLineForm()
