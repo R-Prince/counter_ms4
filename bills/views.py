@@ -58,7 +58,7 @@ def create_bill(request):
             return redirect(reverse('profile'))
 
     bill_form = BillForm()
-    customers = get_list_or_404(Customer, user=request.user)
+    customers = Customer.objects.filter(user=request.user)
     context = {
         'bill_form': bill_form,
         'customers': customers

@@ -201,3 +201,44 @@ body{
     letter-spacing: 3px;
     margin: 10px 0px 25px 0px;
 }
+
+/* Credit to https://epicbootstrap.com/snippets/footer-basic */
+/* Footer CSS */
+.footer-basic {
+  padding:40px 0;
+  background-color: #020F59;
+  color:#fff;
+  margin-top: 5rem;
+  letter-spacing: 2px;
+}
+
+.footer-basic ul {
+  padding:0;
+  list-style:none;
+  text-align:center;
+  font-size:18px;
+  line-height:1.6;
+  margin-bottom:0;
+}
+
+.footer-basic li {
+  padding:0 10px;
+}
+
+.footer-basic ul a {
+  color:inherit;
+  text-decoration:none;
+  opacity:0.8;
+}
+
+.footer-basic ul a:hover {
+  opacity:1;
+}
+
+.footer-basic .copyright {
+  margin-top:15px;
+  text-align:center;
+  font-size:13px;
+  color:#aaa;
+  margin-bottom:0;
+}

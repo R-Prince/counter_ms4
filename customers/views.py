@@ -8,7 +8,7 @@ from django.contrib import messages
 @login_required
 def customers(request):
     # View users customers
-    customers = get_list_or_404(Customer, user=request.user)
+    customers = Customer.objects.filter(user=request.user)
     template = 'customers/customers.html'
     context = {
         'customers': customers

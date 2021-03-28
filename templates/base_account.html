@@ -108,6 +108,19 @@
     {% block content %}
     {% endblock %}
 
+    <div class="footer-basic">
+        <footer>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="{% url 'profile' %}">Dashboard</a></li>
+                <li class="list-inline-item"><a href="#">Invoices</a></li>
+                <li class="list-inline-item"><a href="{% url 'bills' %}">Bills</a></li>
+                <li class="list-inline-item"><a href="{% url 'customers' %}">Customers</a></li>
+                <li class="list-inline-item"><a href="{% url 'profile_info' %}">Settings</a></li>
+            </ul>
+            <p class="copyright">Counter © 2021</p>
+        </footer>
+    </div>
+
     {% block postloadjs %}
     {% endblock %}
 
