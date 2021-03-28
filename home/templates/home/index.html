@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+    <!--Hero Section-->
     <div class="hero-container d-flex align-items-center">
         <div class="container">
             <div class="row">
@@ -17,4 +18,38 @@
             </div>
         </div>
     </div>
+    <!-- Services-->
+    <section class="page-section" id="features">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="page-header">Features</h2>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fas fa-file-invoice fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="my-3">Create Invoices</h4>
+                    <p class="text-muted">Create new Invoices and Bills for customer accounts.</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fas fa-search-dollar fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="my-3">Keep Track of Bills</h4>
+                    <p class="text-muted">Never miss another payment and keep track of customers that haven't paid yet</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fas fa-users fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="my-3">Customer Management</h4>
+                    <p class="text-muted">Keep track of every customers you've ever paid or created an ivoice for</p>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
