@@ -158,6 +158,10 @@ body{
     height: 40vh;
 }
 
+.form-check{
+    margin: 1rem 0px;
+}
+
 /* Messages CSS */
 
 .messages-container{

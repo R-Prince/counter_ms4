@@ -34,8 +34,11 @@
                             <div class="col-6 col-md-3">
                                 {{ bill_form.reference_number | as_crispy_field }}
                             </div>
-                            <div class="col-6 col-md-3">
-                                {{ bill_form.bill_paid | as_crispy_field }}
+                            <div class="col-6 col-md-3 form-check">
+                                <input class="form-check-input" type="checkbox" value="True" id="bill_paid" name="bill_paid">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Bill Paid?
+                                </label>
                             </div>
                         </div>
                         <div class="row" id="bill_lines">
