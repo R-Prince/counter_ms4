@@ -52,6 +52,10 @@ body{
     letter-spacing: 2px;
 }
 
+.btn:hover{
+    color: #05F283;
+}
+
 /* Home Navbar */
 .home-nav{
     background-color: #020F59;

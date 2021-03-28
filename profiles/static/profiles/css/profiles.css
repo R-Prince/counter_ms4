@@ -20,4 +20,5 @@
 
 .profile-card{
     margin: 15px;
+    z-index: 0px;
 }
