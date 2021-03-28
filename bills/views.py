@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect, reverse, get_list_or_404
+from .models import Bill
 from .forms import BillForm, BillLineForm
 from django.contrib import messages
 from customers.models import Customer
+from django.contrib.auth.decorators import login_required
 
 
 # Create Bill
+@login_required
 def create_bill(request):
 
     if request.method == 'POST':
@@ -63,4 +66,15 @@ def create_bill(request):
 
     template = 'bills/create_bill.html'
 
+    return render(request, template, context)
+
+
+@login_required
+def bills(request):
+    # View users bills
+    bills = Bill.objects.filter(user=request.user)
+    template = 'bills/bills.html'
+    context = {
+        'bills': bills
+    }
     return render(request, template, context)

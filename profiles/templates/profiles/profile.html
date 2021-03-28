@@ -9,7 +9,7 @@
 {% block content %}
     <div class="container-fluid profile-container">
         <div class="row">
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-2">
                 <ul class="profile-action">
                     <li>
                         <a href="" class="btn btn-navy">Create Invoice</a>
@@ -22,8 +22,9 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-12 col-md-9">
+            <div class="col-12 col-md-10">
                 <div class="row">
+                    <!--Table for User Overdue Invoices-->
                     <div class="col-12 col-md-6">
                         <div class="card profile-card">
                             <div class="card-header profile-header">
@@ -36,6 +37,7 @@
                             </div>
                         </div>
                     </div>
+                    <!--Table for User Overdue Bills-->
                     <div class="col-12 col-md-6">
                         <div class="card profile-card">
                             <div class="card-header profile-header">
@@ -50,6 +52,7 @@
                     </div>
                 </div>
                 <div class="row">
+                    <!--Table for User Invoices-->
                     <div class="col-12 col-md-6">
                         <div class="card profile-card">
                             <div class="card-header profile-header">
@@ -62,6 +65,7 @@
                             </div>
                         </div>
                     </div>
+                    <!--Table for User Bills-->
                     <div class="col-12 col-md-6">
                         <div class="card profile-card">
                             <div class="card-header profile-header">
@@ -69,7 +73,28 @@
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title"></h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th scope="col">Customer Account</th>
+                                                <th scope="col">Invoice Date</th>
+                                                <th scope="col">Total</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for bill in bills %}
+                                                <tr>
+                                                    <th scope="row">{{ bill.customer_account }}</th>
+                                                    <td>{{ bill.bill_date }}</td>
+                                                    <td>{{ bill.bill_total }}</td>
+                                                    <td><a href="" class="btn btn-navy">View</a></td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <a href="#" class="btn btn-blue">View Bills</a>
                             </div>
                         </div>

@@ -1,0 +1,44 @@
+{% extends 'base_account.html' %}
+{% load static %}
+
+{% block page_header %}
+    <h1 class="d-flex justify-content-center page-header">Bills</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col">Customer Account</th>
+                                <th scope="col">Bill Date</th>
+                                <th scope="col">Due Date</th>
+                                <th scope="col">Reference</th>
+                                <th scope="col">Bill Total</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for bill in bills %}
+                                <tr>
+                                    <th scope="row">{{ bill.customer_account}}</th>
+                                    <td>{{ bill.bill_date }}</td>
+                                    <td>{{ bill.due_date }}</td>
+                                    <td>{{ bill.reference_number }}</td>
+                                    <td>{{ bill.bill_total }}</td>
+                                    <td><a href="" class="btn btn-navy">View</a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <a class="btn green-btn" href="{% url 'create_bill' %}">Create Bill</a>
+        </div>
+    </div>
+{% endblock %}

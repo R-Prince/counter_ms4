@@ -4,6 +4,7 @@ from .models import UserProfile
 from .forms import UserProfileForm
 from django.contrib import messages
 from subscriptions.models import Subscription
+from bills.models import Bill
 from datetime import date, timedelta
 
 
@@ -56,9 +57,11 @@ def profile(request):
         return redirect(reverse('create_profile'))
 
     user_subscription = get_object_or_404(Subscription, user=request.user)
+    bills = Bill.objects.filter(user=request.user)[:4]
     template = 'profiles/profile.html'
     context = {
         'profile': profile,
+        'bills': bills,
     }
     # check if user subscription is valid
     if user_subscription.end_date < date.today():
