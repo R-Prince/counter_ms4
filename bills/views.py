@@ -56,6 +56,10 @@ def create_bill(request):
                 bill_line_form.save()
             messages.success(request, ("Bill Successfully Created!"))
             return redirect(reverse('profile'))
+        else:
+            messages.error(request, (
+                "There was an error with your form, please try again"))
+            return redirect(reverse('create_bill'))
 
     bill_form = BillForm()
     customers = Customer.objects.filter(user=request.user)

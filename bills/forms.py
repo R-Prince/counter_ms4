@@ -19,8 +19,8 @@ class BillForm(forms.ModelForm):
         placeholders = {
             'user': 'Username',
             'customer_account': 'Customer Account',
-            'bill_date': 'Bill Date',
-            'due_date': 'Due Date',
+            'bill_date': 'Date (YYYY-MM-DD)',
+            'due_date': 'Due (YYYY-MM-DD)',
             'reference_number': 'Reference Number',
             'bill_paid': 'Bill Paid?',
         }

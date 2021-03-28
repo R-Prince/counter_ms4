@@ -134,6 +134,10 @@ body{
     margin: 20px 0px;
 }
 
+.no-customer-container{
+    height: 40vh;
+}
+
 /* Messages CSS */
 
 .messages-container{
