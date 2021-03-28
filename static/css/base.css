@@ -108,6 +108,26 @@ body{
     font-family: 'Abel', sans-serif;
 }
 
+.contact-section{
+    background-color: #010B40;
+    margin: 5rem 0px;
+    padding: 5rem 0px;
+}
+
+.page-section{
+    margin: 1rem 0px;
+    padding: 1rem 0px;
+}
+
+.social{
+    padding-top: 2rem;
+}
+
+.social a{
+    font-size: 1.5rem;
+    margin: 0.5rem;
+}
+
 /* Form CSS */
 
 .textInput{
