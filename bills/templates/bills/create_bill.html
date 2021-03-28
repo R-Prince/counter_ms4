@@ -17,7 +17,13 @@
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-12 col-md-4">
-                            {{ bill_form.customer_account | as_crispy_field }}
+                            <select class="form-select textInput" name="customer_account" aria-label="Default select example">
+                                
+                                <option selected>*Select customer</option>
+                                {% for customer in customers %}
+                                    <option value="{{customer}}">{{customer}}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="col-6 col-md-2">
                             {{ bill_form.bill_date | as_crispy_field }}

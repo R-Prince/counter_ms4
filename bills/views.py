@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_list_or_404
 from .forms import BillForm, BillLineForm
 from django.contrib import messages
+from customers.models import Customer
 
 
 # Create Bill
@@ -31,10 +32,9 @@ def create_bill(request):
             bill_line_data = (dict(data))
 
             # Remove unwanted POST data
-            bill_line_data.popitem()
             remove = (
                 'csrfmiddlewaretoken', 'customer_account',
-                'bill_date', 'due_date', 'reference_number')
+                'bill_date', 'due_date', 'reference_number', 'bill_paid')
 
             for items in remove:
                 bill_line_data.pop(items)
@@ -55,8 +55,10 @@ def create_bill(request):
             return redirect(reverse('profile'))
 
     bill_form = BillForm()
+    customers = get_list_or_404(Customer, user=request.user)
     context = {
         'bill_form': bill_form,
+        'customers': customers
     }
 
     template = 'bills/create_bill.html'
