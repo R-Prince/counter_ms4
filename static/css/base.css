@@ -75,7 +75,7 @@ body{
 
 .nav-icon{
     color: white;
-    font-size: 35px;
+    font-size: 1.6rem;
 }
 
 /* Page Header CSS */
@@ -140,6 +140,18 @@ body{
     padding-bottom: 2rem;
     margin-bottom: 2rem;
 }
+
+.padded-multiline{
+    margin: 2rem 0px;
+}
+
+.padded-multiline span { 
+    background-color:#010B40;
+    color: #fff; 
+    display: inline;
+    padding: 0.5rem;
+}
+
 /* Form CSS */
 
 .textInput{
