@@ -17,7 +17,7 @@ def create_bill(request):
             'bill_date': request.POST['bill_date'],
             'due_date': request.POST['due_date'],
             'reference_number': request.POST['reference_number'],
-            'bill_paid': request.POST['bill_paid'],
+            'bill_paid': request.POST.get('bill_paid', False)
         }
         # Use Form data to create Bill
         bill_form = BillForm(form_data)
@@ -37,7 +37,7 @@ def create_bill(request):
             # Remove unwanted POST data
             remove = (
                 'csrfmiddlewaretoken', 'customer_account',
-                'bill_date', 'due_date', 'reference_number', 'bill_paid')
+                'bill_date', 'due_date', 'reference_number')
 
             for items in remove:
                 bill_line_data.pop(items)
