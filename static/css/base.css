@@ -110,13 +110,15 @@ body{
 
 .contact-section{
     background-color: #010B40;
-    margin-top: 5rem;
     padding: 5rem 0px;
 }
 
 .page-section{
-    margin: 1rem 0px;
     padding: 1rem 0px;
+}
+
+.price-section{
+    background-color: #05F2C7;
 }
 
 .btn-social {
@@ -131,6 +133,12 @@ body{
 
 .footer{
     background-color: #05F2C7;
+}
+
+.price-container{
+    background-color: #fff;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
 }
 /* Form CSS */
 
