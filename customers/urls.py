@@ -7,4 +7,7 @@ urlpatterns = [
     path(
         '<customer_id>',
         views.edit_customer, name='edit_customer'),
+    path(
+        'customer/<company_name>',
+        views.customer_account, name='customer_account'),
 ]

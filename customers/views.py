@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Customer
 from .forms import CustomerForm
 from django.contrib import messages
+from bills.models import Bill, BillLineItem
 
 
 @login_required
@@ -66,6 +67,21 @@ def edit_customer(request, customer_id):
     context = {
         'form': form,
         'customer': customer
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def customer_account(request, company_name):
+    # View Customer bills/invoices
+    customer = get_object_or_404(Customer, company_name=company_name)
+    bills = Bill.objects.filter(customer_account=customer.company_name)
+
+    template = 'customers/customer_account.html'
+    context = {
+        'customer': customer,
+        'bills': bills
     }
 
     return render(request, template, context)

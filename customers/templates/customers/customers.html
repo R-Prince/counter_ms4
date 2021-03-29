@@ -27,7 +27,7 @@
                                     <td>{{ customer.customer_name }}</td>
                                     <td>{{ customer.customer_email }}</td>
                                     <td>{{ customer.customer_phone_number }}</td>
-                                    <td><a href="" class="btn btn-navy">View</a></td>
+                                    <td><a href="{% url 'customer_account' customer.company_name %}" class="btn btn-navy">View</a></td>
                                 </tr>
                             {% endfor %}
                         </tbody>

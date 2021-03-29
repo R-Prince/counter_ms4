@@ -61,12 +61,9 @@
                         {% endfor %}                                            
                     </div>
                     <div class="row">
-                        <div class="submit-container col-3">
+                        <div class="submit-container col-12 col-md-4">
                             <button type="submit" class="btn green-btn btn-lg">Update Bill</button>
                             <a href="{% url 'delete_bill' bill.bill_number %}" class="btn btn-blue btn-sm">Delete Bill</a>
-                        </div>
-                        <div class="submit-container col-3">
-
                         </div>
                         <div class="col-9 d-flex flex-row-reverse bd-highlight">
                             <ul class="total-container">
