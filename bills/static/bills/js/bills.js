@@ -8,37 +8,3 @@ $("#add_item").click(function(){
 $("#bill_lines").on("click", ".delete_line", function(){ 
     $(this).parent('div').remove(); 
 });
-
-// Calculate Tax Total
-$("#bill_lines").on('input','.tax',function(){
-    var totalTax = 0;
-    $(".tax").each(function(){
-        var inputData = $(this).val();
-        totalTax += parseFloat(inputData)
-    })
-    $('.tax-total').text(totalTax)
-});
-
-// Calculate Sub Total
-$("#bill_lines").on('input','.price',function(){
-    var totalPrice = 0;
-    
-    $(".price").each(function(){
-        var price = $(this).val();
-        totalPrice += parseFloat(price)
-    })
-
-    var subTotal = totalPrice
-    $('.sub-total').text(subTotal)
-});
-
-// Calculate Total
-$("#bill_lines").on('input', function(){
-    var subTotal = $('.sub-total').text()
-    subTotal = parseFloat(subTotal)
-
-    var taxTotal = $('.tax-total').text()
-    taxTotal = parseFloat(taxTotal)
-
-    $('.total').text(taxTotal + subTotal)
-});

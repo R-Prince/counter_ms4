@@ -1,0 +1,81 @@
+{% extends 'base_account.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'bills/css/bills.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <h1 class="d-flex justify-content-center page-header">Bill</h1>
+{% endblock %}
+
+{% block content %}
+   <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form action="{% url 'edit_bill' bill.bill_number %}" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            {{ form.customer_account | as_crispy_field }}
+                        </div>
+                        <div class="col-6 col-md-2">
+                            {{ form.bill_date | as_crispy_field }}
+                        </div>
+                        <div class="col-6 col-md-2">
+                            {{ form.due_date | as_crispy_field}}
+                        </div>
+                        <div class="col-6 col-md-3">
+                            {{ form.reference_number | as_crispy_field }}
+                        </div>
+                        <div class="col-6 col-md-3 form-check">
+                            {% if bill.bill_paid == 1 %}
+                                <input class="form-check-input" type="checkbox" value="False" id="bill_paid" name="bill_paid" checked>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Bill Paid?
+                                </label>
+                            {% else %}
+                                <input class="form-check-input" type="checkbox" value="True" id="bill_paid_false" name="bill_paid">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Bill Paid?
+                                </label>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row" id="bill_lines">
+                        {% for line in billLines %}
+                            <div class="row" id="bill_items">
+                                <div class="col-12 col-md-4">
+                                    <input type="textarea" class="form-control textInput" id="description" name="description" placeholder="Description*" minlength="3" value="{{ line.description}}" readonly>
+                                </div>
+                                <div class="col-12 col-md-2">
+                                    <input type="number" class="form-control textInput quantity" id="quantity" name="quantity" placeholder="Qty*" value="{{ line.quantity}}" readonly>
+                                </div>
+                                <div class="col-12 col-md-2">
+                                    <input type="number" class="form-control textInput price" id="price" name="price" placeholder="Price*" value="{{ line.price}}" readonly>
+                                </div>
+                                <div class="col-12 col-md-2">
+                                    <input type="number" class="form-control textInput tax" id="tax" name="tax" placeholder="Tax*" value="{{ line.item_tax}}" readonly>
+                                </div>
+                            </div>
+                        {% endfor %}                                            
+                    </div>
+                    <div class="row">
+                        <div class="submit-container col-3">
+                            <button type="submit" class="btn green-btn btn-lg">Update Bill</button>
+                        </div>
+                        <div class="col-9 d-flex flex-row-reverse bd-highlight">
+                            <ul class="total-container">
+                                <li>Total: £<span class="total">{{bill.bill_total}}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+    <script src="{% static 'bills/js/bills.js' %}"></script>
+{% endblock %}

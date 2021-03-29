@@ -61,7 +61,7 @@
                                                     <th scope="row">{{ bill.customer_account }}</th>
                                                     <td>{{ bill.bill_date }}</td>
                                                     <td>{{ bill.bill_total }}</td>
-                                                    <td><a href="" class="btn btn-navy">View</a></td>
+                                                    <td><a href="{% url 'edit_bill' bill.bill_number %}" class="btn btn-navy">View</a></td>
                                                 </tr>
                                             {% endfor %}
                                         </tbody>

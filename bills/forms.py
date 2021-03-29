@@ -25,7 +25,6 @@ class BillForm(forms.ModelForm):
             'bill_paid': 'Bill Paid?',
         }
 
-        self.fields['customer_account'].widget.attrs['autofocus'] = True
         for field in self.fields:
             if self.fields[field].required:
                 placeholder = f'{placeholders[field]} *'

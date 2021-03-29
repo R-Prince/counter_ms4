@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, reverse, get_list_or_404
-from .models import Bill
+from .models import Bill, BillLineItem
 from .forms import BillForm, BillLineForm
 from django.contrib import messages
 from customers.models import Customer
@@ -81,4 +81,39 @@ def bills(request):
     context = {
         'bills': bills
     }
+    return render(request, template, context)
+
+
+@login_required
+def edit_bill(request, bill_number):
+    # Edit Bill
+    bill = Bill.objects.get(bill_number=bill_number)
+    billLines = BillLineItem.objects.filter(bill=bill)
+
+    if request.method == "POST":
+        form_data = {
+            'user': request.user,
+            'customer_account': request.POST['customer_account'],
+            'bill_date': request.POST['bill_date'],
+            'due_date': request.POST['due_date'],
+            'reference_number': request.POST['reference_number'],
+            'bill_paid': request.POST.get('bill_paid', False)
+        }
+        bill_form = BillForm(form_data, instance=bill)
+        if bill_form.is_valid():
+            bill_form.save()
+            messages.success(request, ("Bill Successfully Updated!"))
+            return redirect(reverse('profile'))
+
+    customers = Customer.objects.filter(user=request.user)
+    form = BillForm(instance=bill)
+
+    template = 'bills/edit_bill.html'
+    context = {
+        'bill': bill,
+        'billLines': billLines,
+        'customers': customers,
+        'form': form
+    }
+
     return render(request, template, context)

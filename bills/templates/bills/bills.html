@@ -29,7 +29,7 @@
                                     <td>{{ bill.due_date }}</td>
                                     <td>{{ bill.reference_number }}</td>
                                     <td>{{ bill.bill_total }}</td>
-                                    <td><a href="" class="btn btn-navy">View</a></td>
+                                    <td><a href="{% url 'edit_bill' bill.bill_number %}" class="btn btn-navy">View</a></td>
                                 </tr>
                             {% endfor %}
                         </tbody>
