@@ -18,6 +18,7 @@
                                 <th scope="col">Due Date</th>
                                 <th scope="col">Reference</th>
                                 <th scope="col">Bill Total</th>
+                                <th scope="col">Bill Paid</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
@@ -29,6 +30,11 @@
                                     <td>{{ bill.due_date }}</td>
                                     <td>{{ bill.reference_number }}</td>
                                     <td>{{ bill.bill_total }}</td>
+                                    {% if bill.bill_paid == 1 %}
+                                        <td>Yes</td>
+                                    {% else %}
+                                        <td>No</td>
+                                    {% endif %}
                                     <td><a href="{% url 'edit_bill' bill.bill_number %}" class="btn btn-navy">View</a></td>
                                 </tr>
                             {% endfor %}
