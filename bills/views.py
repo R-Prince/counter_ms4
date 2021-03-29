@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse, get_list_or_404
+from django.shortcuts import render, redirect, reverse, get_list_or_404, get_object_or_404
 from .models import Bill, BillLineItem
 from .forms import BillForm, BillLineForm
 from django.contrib import messages
@@ -117,3 +117,14 @@ def edit_bill(request, bill_number):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_bill(request, bill_number):
+    # Delete Bill
+    bill = get_object_or_404(Bill, bill_number=bill_number)
+    bill.delete()
+    messages.success(request, ("Bill Successfully Deleted!"))
+
+    return redirect(reverse('profile'))
+

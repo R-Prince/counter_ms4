@@ -7,4 +7,7 @@ urlpatterns = [
     path(
         '<bill_number>',
         views.edit_bill, name='edit_bill'),
+    path(
+        'delete_bill/<bill_number>',
+        views.delete_bill, name='delete_bill'),
 ]
