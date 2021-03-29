@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'customers',
     'bills',
     'subscriptions',
+    'invoices',
 
 
     # Other Packages
