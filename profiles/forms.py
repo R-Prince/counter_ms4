@@ -10,7 +10,7 @@ class UserProfileForm(forms.ModelForm):
             'email', 'phone_number', 'company_name',
             'company_street_address1', 'company_street_address2',
             'company_city', 'company_county',
-            'company_postcode', 'company_logo')
+            'company_postcode')
 
 
 def __init__(self, *args, **kwargs):
@@ -29,7 +29,6 @@ def __init__(self, *args, **kwargs):
         'company_city': 'City',
         'company_county': 'County',
         'company_postcode': 'Postcode',
-        'company_logo': 'Company Logo'
     }
 
     self.fields['full_name'].widget.attrs['autofocus'] = True

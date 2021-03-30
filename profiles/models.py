@@ -16,7 +16,6 @@ class UserProfile(models.Model):
     company_city = models.CharField(max_length=40, null=False, blank=False)
     company_county = models.CharField(max_length=80, blank=True)
     company_postcode = models.CharField(max_length=20, null=False, blank=False)
-    company_logo = models.ImageField(blank=True)
 
     def __str__(self):
         return self.company_name

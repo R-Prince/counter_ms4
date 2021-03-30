@@ -24,7 +24,6 @@ def create_profile(request):
             'company_city': request.POST['company_city'],
             'company_county': request.POST['company_county'],
             'company_postcode': request.POST['company_postcode'],
-            'company_logo': request.POST['company_logo']
         }
         user_profile_form = UserProfileForm(form_data)
         if user_profile_form.is_valid():
