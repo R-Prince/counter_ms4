@@ -10,4 +10,7 @@ urlpatterns = [
     path(
         'customer/<company_name>',
         views.customer_account, name='customer_account'),
+    path(
+        'delete/<customer_id>',
+        views.delete_customer, name='delete_customer'),
 ]

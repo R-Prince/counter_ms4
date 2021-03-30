@@ -41,7 +41,7 @@
                     <div class="col-12">
                         <div class="card profile-card">
                             <div class="card-header profile-header">
-                                Overdue Bills
+                                Bills Not Paid
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title"></h5>
@@ -50,7 +50,7 @@
                                         <thead class="table-light">
                                             <tr>
                                                 <th scope="col">Customer Account</th>
-                                                <th scope="col">Invoice Date</th>
+                                                <th scope="col">Due Date</th>
                                                 <th scope="col">Total</th>
                                                 <th scope="col">Bill Paid</th>
                                                 <th scope="col"></th>
@@ -61,7 +61,7 @@
                                                 {% if bill.bill_paid == 0 %}
                                                 <tr>
                                                     <th scope="row">{{ bill.customer_account }}</th>
-                                                    <td>{{ bill.bill_date }}</td>
+                                                    <td>{{ bill.due_date }}</td>
                                                     <td>{{ bill.bill_total }}</td>
                                                     {% if bill.bill_paid == 1 %}
                                                         <td>Yes</td>

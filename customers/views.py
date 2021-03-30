@@ -85,3 +85,13 @@ def customer_account(request, company_name):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_customer(request, customer_id):
+    # Delete Customer
+    customer = get_object_or_404(Customer, pk=customer_id)
+    customer.delete()
+    messages.success(request, ("Customer Successfully Deleted!"))
+
+    return redirect(reverse('profile'))

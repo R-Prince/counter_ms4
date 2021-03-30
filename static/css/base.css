@@ -190,6 +190,15 @@ body{
     margin: 1rem 0px;
 }
 
+.profile-action{
+    margin-bottom: 2rem;
+}
+
+.customer-title{
+    color: #0583F2;
+    margin-bottom: 0.5rem;
+}
+
 /* Messages CSS */
 
 .messages-container{

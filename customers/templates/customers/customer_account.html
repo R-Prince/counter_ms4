@@ -8,6 +8,13 @@
 {% block content %}
     <div class="container">
         <div class="row">
+            <div class="col-12 profile-action">
+              <a href="{% url 'edit_customer' customer.id %}" class="btn btn-navy">Edit</a> 
+              <a href="{% url 'delete_customer' customer.id %}" class="btn btn-blue">Delete</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 customer-title">Bills</div>
             <div class="col-12">
                 <div class="table-responsive">
                     <table class="table">
