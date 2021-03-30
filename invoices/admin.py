@@ -14,7 +14,7 @@ class InvoiceAdmin(admin.ModelAdmin):
 
     readonly_fields = ('invoice_number', 'invoice_total',)
 
-    fields = ('user', 'invoice_number', 'customer_account', 'inv_date',
+    fields = ('user', 'invoice_number', 'customer_account', 'invoice_date',
               'due_date', 'reference_number', 'invoice_paid',
               'invoice_total',)
 
