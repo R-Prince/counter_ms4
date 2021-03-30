@@ -7,7 +7,7 @@ from customers.models import Customer
 from django.contrib.auth.decorators import login_required
 
 
-# Create Bill
+# Create Invoice
 @login_required
 def create_invoice(request):
 

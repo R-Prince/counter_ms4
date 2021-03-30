@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse, get_list_or_404, get_object_or_404
+from django.shortcuts import (
+    render, redirect, reverse, get_object_or_404)
 from .models import Bill, BillLineItem
 from .forms import BillForm, BillLineForm
 from django.contrib import messages

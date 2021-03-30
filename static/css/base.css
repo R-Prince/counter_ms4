@@ -307,3 +307,30 @@ body{
   color:#aaa;
   margin-bottom:0;
 }
+
+/* Bill and Invoice CSS */
+
+.total-container{
+    list-style: none;
+    padding: 20px;
+    border: 3px solid;
+}
+
+.total-container li{
+    margin: 0.5rem 0px ;
+    font-size: 1.4rem;
+}
+
+#bill_lines{
+    background-color: #f2f2f2;
+    padding: 1rem 0px;
+}
+
+#invoice_lines{
+    background-color: #f2f2f2;
+    padding: 1rem 0px;
+}
+
+.button-container{
+    margin: 0.5rem 0px;
+}

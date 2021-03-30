@@ -12,7 +12,7 @@
             <div class="col-12 col-md-2">
                 <ul class="profile-action">
                     <li>
-                        <a href="" class="btn btn-navy">Create Invoice</a>
+                        <a href="{% url 'create_invoice' %}" class="btn btn-navy">Create Invoice</a>
                     </li>
                     <li>
                         <a href="{% url 'create_bill' %}" class="btn btn-navy">Create Bill</a>
@@ -28,12 +28,41 @@
                     <div class="col-12">
                         <div class="card profile-card">
                             <div class="card-header profile-header">
-                                Invoices
+                                Invoices Not Paid
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title"></h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-blue">View Invoices</a>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th scope="col">Customer Account</th>
+                                                <th scope="col">Due Date</th>
+                                                <th scope="col">Total</th>
+                                                <th scope="col">Invoice Paid</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for invoice in invoices %}
+                                                {% if invoice.invoice_paid == 0 %}
+                                                <tr>
+                                                    <th scope="row">{{ invoice.customer_account }}</th>
+                                                    <td>{{ invoice.due_date }}</td>
+                                                    <td>{{ invoice.invoice_total }}</td>
+                                                    {% if invoice.invoice_paid == 1 %}
+                                                        <td>Yes</td>
+                                                    {% else %}
+                                                        <td>No</td>
+                                                    {% endif %}
+                                                    <td><a href="{% url 'edit_invoice' invoice.invoice_number %}" class="btn btn-navy">View</a></td>
+                                                </tr>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <a href="{% url 'invoices' %}" class="btn btn-blue">View Invoices</a>
                             </div>
                         </div>
                     </div>

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block page_header %}
-    <h1 class="d-flex justify-content-center page-header">Create Bill</h1>
+    <h1 class="d-flex justify-content-center page-header">Create Invoice</h1>
 {% endblock %}
 
 {% block content %}
@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <form action="{% url 'create_bill' %}" method="POST">
+                    <form action="{% url 'create_invoice' %}" method="POST">
                         {% csrf_token %}
                         <div class="row">
                             <div class="col-12 col-md-4">
@@ -22,23 +22,23 @@
                                 </select>
                             </div>
                             <div class="col-6 col-md-2">
-                                {{ bill_form.bill_date | as_crispy_field }}
+                                {{ invoice_form.invoice_date | as_crispy_field }}
                             </div>
                             <div class="col-6 col-md-2">
-                                {{ bill_form.due_date | as_crispy_field}}
+                                {{ invoice_form.due_date | as_crispy_field}}
                             </div>
                             <div class="col-6 col-md-3">
-                                {{ bill_form.reference_number | as_crispy_field }}
+                                {{ invoice_form.reference_number | as_crispy_field }}
                             </div>
                             <div class="col-6 col-md-3 form-check">
-                                <input class="form-check-input" type="checkbox" value="True" id="bill_paid" name="bill_paid">
+                                <input class="form-check-input" type="checkbox" value="True" id="invoice_paid" name="invoice_paid">
                                 <label class="form-check-label" for="flexCheckDefault">
-                                    Bill Paid?
+                                    Invoice Paid?
                                 </label>
                             </div>
                         </div>
-                        <div class="row" id="bill_lines">
-                            <div class="row" id="bill_items">
+                        <div class="row" id="invoice_lines">
+                            <div class="row" id="invoice_items">
                                 <div class="col-12 col-md-4">
                                     <input type="textarea" class="form-control textInput" id="description" name="description" placeholder="Description*" required minlength="3">
                                 </div>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="row">
                             <div class="submit-container col-12 col-md-4">
-                                <button type="submit" class="btn green-btn btn-lg">Submit Bill</button>
+                                <button type="submit" class="btn green-btn btn-lg">Submit Invoice</button>
                             </div>
                         </div>
                     </form>
@@ -71,7 +71,7 @@
         <div class="container no-customer-container">
             <div class="row">
                 <div class="col-12 alert alert-danger" role="alert">
-                    Please create a Customer first before adding a bill!
+                    Please create a Customer first before adding an invoice!
                 </div>
             </div>
             <div class="row">
@@ -84,5 +84,5 @@
 {% endblock %}
 
 {% block postloadjs %}
-    <script src="{% static 'bills/js/bills.js' %}"></script>
+    <script src="{% static 'invoices/js/invoices.js' %}"></script>
 {% endblock %}
