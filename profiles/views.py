@@ -92,4 +92,3 @@ def profile_info(request):
     }
 
     return render(request, template, context)
-

@@ -5,11 +5,12 @@ from .models import Customer
 class CustomerForm(forms.ModelForm):
     class Meta:
         model = Customer
-        fields = ('user', 'customer_name',
-                    'customer_email', 'customer_phone_number', 'company_name',
-                    'company_street_address1', 'company_street_address2',
-                    'company_city', 'company_county',
-                    'company_postcode')
+        fields = (
+            'user', 'customer_name',
+            'customer_email', 'customer_phone_number', 'company_name',
+            'company_street_address1', 'company_street_address2',
+            'company_city', 'company_county',
+            'company_postcode')
 
 
 def __init__(self, *args, **kwargs):

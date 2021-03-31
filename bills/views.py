@@ -128,4 +128,3 @@ def delete_bill(request, bill_number):
     messages.success(request, ("Bill Successfully Deleted!"))
 
     return redirect(reverse('profile'))
-
