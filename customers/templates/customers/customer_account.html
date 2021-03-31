@@ -53,5 +53,45 @@
         <div class="col-12">
             <a class="btn green-btn" href="{% url 'create_bill' %}">Create Bill</a>
         </div>
+        <div class="row">
+            <div class="col-12 customer-title">Invoices</div>
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col">Customer Account</th>
+                                <th scope="col">Invoice Date</th>
+                                <th scope="col">Due Date</th>
+                                <th scope="col">Reference</th>
+                                <th scope="col">Invoice Total</th>
+                                <th scope="col">Invoice Paid</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for invoice in invoices %}
+                                <tr>
+                                    <th scope="row">{{ invoice.customer_account}}</th>
+                                    <td>{{ invoice.invoice_date }}</td>
+                                    <td>{{ invoice.due_date }}</td>
+                                    <td>{{ invoice.reference_number }}</td>
+                                    <td>{{ invoice.invoice_total }}</td>
+                                    {% if invoice.invoice_paid == 1 %}
+                                        <td>Yes</td>
+                                    {% else %}
+                                        <td>No</td>
+                                    {% endif %}
+                                    <td><a href="{% url 'edit_invoice' invoice.invoice_number %}" class="btn btn-navy">View</a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <a class="btn green-btn" href="{% url 'create_invoice' %}">Create Invoice</a>
+        </div>
     </div>
 {% endblock %}

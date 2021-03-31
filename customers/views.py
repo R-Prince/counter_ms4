@@ -1,9 +1,10 @@
-from django.shortcuts import render, get_list_or_404, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Customer
 from .forms import CustomerForm
 from django.contrib import messages
-from bills.models import Bill, BillLineItem
+from bills.models import Bill
+from invoices.models import Invoice
 
 
 @login_required
@@ -77,11 +78,13 @@ def customer_account(request, company_name):
     # View Customer bills/invoices
     customer = get_object_or_404(Customer, company_name=company_name)
     bills = Bill.objects.filter(customer_account=customer.company_name)
+    invoices = Invoice.objects.filter(customer_account=customer.company_name)
 
     template = 'customers/customer_account.html'
     context = {
         'customer': customer,
-        'bills': bills
+        'bills': bills,
+        'invoices': invoices,
     }
 
     return render(request, template, context)

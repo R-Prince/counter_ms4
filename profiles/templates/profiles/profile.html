@@ -45,7 +45,7 @@
                                         </thead>
                                         <tbody>
                                             {% for invoice in invoices %}
-                                                {% if invoice.invoice_paid == 0 %}
+                                                {%if invoice.invoice_paid == 0%}
                                                 <tr>
                                                     <th scope="row">{{ invoice.customer_account }}</th>
                                                     <td>{{ invoice.due_date }}</td>
