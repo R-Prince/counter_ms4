@@ -26,7 +26,7 @@ class Invoice(models.Model):
 
     def update_total(self):
         """
-        Update bill total each time a bill line item is added
+        Update invoice total each time a invoice line item is added
         """
         self.invoice_total = self.lineitems.aggregate(
             Sum('item_total'))['item_total__sum'] or 0
